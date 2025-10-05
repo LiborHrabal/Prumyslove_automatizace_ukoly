@@ -1,0 +1,9 @@
+progress
+numpy
+pandas
+seaborn
+plotly
+dash
+pyserial
+pymodbus
+requests
