@@ -7,3 +7,5 @@ dash
 pyserial
 pymodbus
 requests
+pymongo
+logging

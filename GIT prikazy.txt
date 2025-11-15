@@ -1,0 +1,4 @@
+git status
+git add data.csv
+git commit -m "Aktualizovaná data ze senzoru"
+git push

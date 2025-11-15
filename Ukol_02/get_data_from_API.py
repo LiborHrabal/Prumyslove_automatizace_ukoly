@@ -8,7 +8,7 @@ from plotly.subplots import make_subplots
 import requests_cache   
 from retry_requests import retry  
 
-path_to_saved_csv =  "datasets\weather_data\weather_forecast.csv"
+path_to_saved_csv =  r"datasets\weather_data\weather_forecast.csv"
 
 # Ziska verejnou adresu IP:
 def get_ip_address(host_name):

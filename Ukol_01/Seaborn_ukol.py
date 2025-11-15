@@ -2,7 +2,7 @@
 # Import necessary libraries
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns       
+import seaborn as sns   
 
 PATH = "datasets\cnc_mill_tool_wear\experiment_01.csv"
 

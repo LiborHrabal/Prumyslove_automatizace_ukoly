@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - Ukol_03_network
+
+  data_transformer:
+    build: ./data_trasformer
+    container_name: data_transformer
+    restart: on-failure
+    environment:
+      MONGO_HOST: mongodb://mongo:27017/
+      DB_NAME: ukol03_mongodb
+    depends_on:
+      - mongo
+    networks:
+      - Ukol_03_network
+    volumes:
+      - ./data:/app/data
+
+  http_server:
+    build: ./http_server
+    container_name: http_server
+    restart: on-failure
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8000
+      MONGO_HOST: mongodb://mongo:27017/
+      DB_NAME: ukol03_mongodb
+      COLLECTION_NAME: machine_data
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+    networks:
+      - Ukol_03_network
+
+volumes:
+  mongo_data:
+
+networks:
+  Ukol_03_network:
+    driver: bridge
